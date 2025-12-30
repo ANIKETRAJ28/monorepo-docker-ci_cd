@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (_req, res) => res.send("server looking good"));
+app.get("/", (_req, res) => res.send("server healthy"));
 
 app.get("/todos", async (_req, res) => {
   const todos = await prisma.todos.findMany();
