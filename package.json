@@ -1,0 +1,14 @@
+{
+  "name": "todo_app-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "pnpm -r --sort build",
+    "start": "pnpm -r --parallel --filter \"./apps/**\" start",
+    "db:generate": "pnpm --filter db generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0"
+}
