@@ -33,4 +33,5 @@ jobs:
           file: ./docker/Dockerfile.server
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/todo_monorepo-server:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/todo-monorepo-server:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/todo-monorepo-server:${{ github.sha }}
