@@ -18,5 +18,5 @@ app.post("/emit", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`WS listning on ${PORT}`);
+  console.log(`WS running at port ${PORT}`);
 });
