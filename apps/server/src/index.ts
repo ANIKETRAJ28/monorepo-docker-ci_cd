@@ -30,5 +30,5 @@ app.post("/todo", async (_req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at port ${PORT}`);
+  console.log(`Server listning at port ${PORT}`);
 });

@@ -36,7 +36,7 @@ function App() {
   };
 
   return (
-    <div style={{ padding: 22 }}>
+    <div style={{ padding: 20 }}>
       <h2>Todos</h2>
 
       <button onClick={postTodo}>Create new todo</button>
