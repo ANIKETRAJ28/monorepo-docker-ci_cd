@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:18
+    container_name: todo_monorepo-db
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - volume:/var/lib/postgresql
+    networks:
+      - network
+
+  server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.server
+    container_name: todo_monorepo-server
+    depends_on:
+      - db
+    env_file:
+      - ./apps/server/.env
+    ports:
+      - "3000:3000"
+    networks:
+      - network
+    command: >
+      sh -c "pnpm db:migrate && pnpm start"
+
+  client:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.client
+    container_name: todo_monorepo-client
+    env_file:
+      - ./apps/client/.env
+    ports:
+      - "4173:4173"
+    networks:
+      - network
+
+  ws:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.ws
+    container_name: todo_monorepo-ws
+    env_file:
+      - ./apps/ws/.env
+    ports:
+      - "4000:4000"
+      - "5000:5000"
+    networks:
+      - network
+
+volumes:
+  volume:
+
+networks:
+  network:
